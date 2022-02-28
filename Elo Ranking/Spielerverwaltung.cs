@@ -112,45 +112,45 @@ namespace Elo_Ranking
 
         public void SetResult1()
         {
-            bool isCorrect = false;
-
-            while (!isCorrect)
+            while (true)
             {
-                isCorrect = true;
                 DialogManager.WriteSetResult1(this);
-                string result1Eingabe = Console.ReadLine();
-                bool umwandlung = Int32.TryParse(result1Eingabe, out result1);
-                if (!umwandlung)
+                if (Result1(Console.ReadLine()))
                 {
-                    Console.WriteLine(DialogManager.wrongFormat);
-                    isCorrect = false;
+                    break;
                 }
+                Console.WriteLine(DialogManager.wrongFormat);
             }
+        }
+
+        private bool Result1(string result1Eingabe)
+        {
+            return Int32.TryParse(result1Eingabe, out result1);
         }
 
         public void SetResult2()
         {
-            bool isCorrect = false;
-
-            while (!isCorrect)
+            while (true)
             {
-                isCorrect = true;
                 DialogManager.WriteSetResult2(this);
-                //Console.WriteLine($"\nPunktzahl {Spieler[player2].Name} :");
-                string result2Eingabe = Console.ReadLine();
-                bool umwandlung = Int32.TryParse(result2Eingabe, out result2);
-                if (!umwandlung)
+                if (Result2(Console.ReadLine()))
                 {
-                    Console.WriteLine(DialogManager.wrongFormat);
-                    isCorrect = false;
+                    break;
                 }
+                Console.WriteLine(DialogManager.wrongFormat);
             }
+        }
 
+        private bool Result2(string result2Eingabe)
+        {
+            return Int32.TryParse(result2Eingabe, out result2);
         }
 
         public bool CheckResult()
         {
-            if (!(result1 == 11 && result2 < 10 || result1 < 10 && result2 == 11 || Math.Abs(result1 - result2) == 2 && (result1 > 11 || result2 > 11)))
+            if (!(result1 == 11 && result2 < 10 
+                || result1 < 10 && result2 == 11 
+                || Math.Abs(result1 - result2) == 2 && (result1 > 11 || result2 > 11)))
             {
                 Console.WriteLine(DialogManager.followRules);
                 return false;
