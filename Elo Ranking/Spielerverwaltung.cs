@@ -58,21 +58,6 @@ namespace Elo_Ranking
             FirstAction();
         }
 
-        //public void SetPlayer1()
-        //{
-        //    Tabelle.SpielerListe(this);
-
-        //    while (true)
-        //    {
-        //        DialogManager.WriteSetPlayer1();
-
-        //        if (UmwandlungPlayer1(Console.ReadLine()))
-        //        {
-        //            break;
-        //        }
-        //        Console.WriteLine(DialogManager.error);
-        //    }
-        //}
         public bool UmwandlungPlayer1(string player1Eingabe)
         {
             bool umwandlung = Int32.TryParse(player1Eingabe, out player1);
@@ -80,50 +65,15 @@ namespace Elo_Ranking
             return umwandlung && player1 < Spieler.Count();
         }
 
-        //public void SetPlayer2()
-        //{
-        //    while (true)
-        //    {
-        //        DialogManager.WriteSetPlayer2();
-        //        bool umwandlung = UmwandlungPlayer2(Console.ReadLine());
-        //        bool samePlayer = player1 == player2;
-
-        //        if (umwandlung && !samePlayer)
-        //        {
-        //            Console.WriteLine("");
-        //            break;
-        //        }
-        //        else if (samePlayer)
-        //        {
-        //            Console.WriteLine(DialogManager.wrongPlayers);
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine(DialogManager.error);
-        //        }
-        //    }
-        //}
-
         public bool UmwandlungPlayer2(string player2Eingabe)
         {
             bool umwandlung = Int32.TryParse(player2Eingabe, out player2);
             return umwandlung && player2 < Spieler.Count();
         }
 
-        public void SetResult1()
-        {
-            while (true)
-            {
-                DialogManager.WriteSetResult1(this);
-                if (Result1(Console.ReadLine()))
-                {
-                    break;
-                }
-                Console.WriteLine(DialogManager.wrongFormat);
-            }
-        }
+        
 
-        private bool Result1(string result1Eingabe)
+        public bool Result1(string result1Eingabe)
         {
             return Int32.TryParse(result1Eingabe, out result1);
         }

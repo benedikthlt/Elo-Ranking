@@ -80,6 +80,18 @@ namespace Elo_Ranking
                 }
             }
         }
+        public static void SetResult1(Spielerverwaltung spielerverwaltung)
+        {
+            while (true)
+            {
+                WriteSetResult1(spielerverwaltung);
+                if (spielerverwaltung.Result1(Console.ReadLine()))
+                {
+                    break;
+                }
+                Console.WriteLine(wrongFormat);
+            }
+        }
 
 
 
