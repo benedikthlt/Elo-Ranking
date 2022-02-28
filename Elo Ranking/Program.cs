@@ -14,7 +14,7 @@
 
                 spielerverwaltung.FirstAction();
                 DialogManager.SetPlayer1(spielerverwaltung);
-                spielerverwaltung.SetPlayer2();
+                DialogManager.SetPlayer2(spielerverwaltung);
 
                 bool isRunning2 = true;
                 while (isRunning2)

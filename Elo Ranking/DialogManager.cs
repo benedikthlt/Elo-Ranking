@@ -48,13 +48,36 @@ namespace Elo_Ranking
 
             while (true)
             {
-                DialogManager.WriteSetPlayer1();
+                WriteSetPlayer1();
 
                 if (spielerverwaltung.UmwandlungPlayer1(Console.ReadLine()))
                 {
                     break;
                 }
-                Console.WriteLine(DialogManager.error);
+                Console.WriteLine(error);
+            }
+        }
+        public static void SetPlayer2(Spielerverwaltung spielerverwaltung)
+        {
+            while (true)
+            {
+                WriteSetPlayer2();
+                bool umwandlung = spielerverwaltung.UmwandlungPlayer2(Console.ReadLine());
+                bool samePlayer = spielerverwaltung.Player1 == spielerverwaltung.Player2;
+
+                if (umwandlung && !samePlayer)
+                {
+                    Console.WriteLine("");
+                    break;
+                }
+                else if (samePlayer)
+                {
+                    Console.WriteLine(wrongPlayers);
+                }
+                else
+                {
+                    Console.WriteLine(error);
+                }
             }
         }
 

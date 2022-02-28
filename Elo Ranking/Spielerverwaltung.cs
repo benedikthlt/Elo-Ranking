@@ -80,31 +80,31 @@ namespace Elo_Ranking
             return umwandlung && player1 < Spieler.Count();
         }
 
-        public void SetPlayer2()
-        {
-            while (true)
-            {
-                DialogManager.WriteSetPlayer2();
-                bool umwandlung = UmwandlungPlayer2(Console.ReadLine());
-                bool samePlayer = player1 == player2;
+        //public void SetPlayer2()
+        //{
+        //    while (true)
+        //    {
+        //        DialogManager.WriteSetPlayer2();
+        //        bool umwandlung = UmwandlungPlayer2(Console.ReadLine());
+        //        bool samePlayer = player1 == player2;
 
-                if (umwandlung && !samePlayer)
-                {
-                    Console.WriteLine("");
-                    break;
-                }
-                else if (samePlayer)
-                {
-                    Console.WriteLine(DialogManager.wrongPlayers);
-                }
-                else
-                {
-                    Console.WriteLine(DialogManager.error);
-                }
-            }
-        }
+        //        if (umwandlung && !samePlayer)
+        //        {
+        //            Console.WriteLine("");
+        //            break;
+        //        }
+        //        else if (samePlayer)
+        //        {
+        //            Console.WriteLine(DialogManager.wrongPlayers);
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine(DialogManager.error);
+        //        }
+        //    }
+        //}
 
-        private bool UmwandlungPlayer2(string player2Eingabe)
+        public bool UmwandlungPlayer2(string player2Eingabe)
         {
             bool umwandlung = Int32.TryParse(player2Eingabe, out player2);
             return umwandlung && player2 < Spieler.Count();
