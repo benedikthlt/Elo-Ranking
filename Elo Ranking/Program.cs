@@ -6,8 +6,6 @@
         {
             Start();
             var spielerverwaltung = new Spielerverwaltung();
-            var spieler = new Spieler();
-            var tabelle = new Tabelle();
 
             bool isRunning = true;
             while (isRunning)
@@ -43,7 +41,7 @@
 
                         spielerverwaltung.ApplyMatch();
                         Console.WriteLine("Tabelle:");
-                        spielerverwaltung.TabelleAnzeigen();
+                        spielerverwaltung.TabelleColoredAnzeigen();
                         Console.ReadLine();
 
                         bool isCorrect = false;

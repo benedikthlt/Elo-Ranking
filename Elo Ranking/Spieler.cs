@@ -50,5 +50,6 @@ namespace Elo_Ranking
             float expected1 = (float)(1 / nenner);
             return expected1;
         }
+
     }
 }

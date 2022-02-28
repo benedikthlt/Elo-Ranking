@@ -10,6 +10,8 @@ namespace Elo_Ranking
     public class Spielerverwaltung
     {
         public List<Spieler> Spieler = new List<Spieler>();
+
+
         private int player1;
         public int Player1 => player1;
 
@@ -48,6 +50,7 @@ namespace Elo_Ranking
 
         public void NewPlayer()
         {
+
             Console.WriteLine(DialogManager.newName);
             string newPlayer = Console.ReadLine();
             Spieler.Add(new Spieler(newPlayer, 1000));
@@ -58,71 +61,53 @@ namespace Elo_Ranking
         public void SetPlayer1()
         {
             Tabelle.SpielerListe(this);
-            bool isCorrect = false;
 
-            while (!isCorrect)
+            while (true)
             {
-                
                 DialogManager.WriteSetPlayer1();
-                string player1Eingabe = Console.ReadLine();
-                bool umwandlung = Int32.TryParse(player1Eingabe, out player1);
 
-                if (umwandlung)
+                if (UmwandlungPlayer1(Console.ReadLine()))
                 {
-                    if (player1 >= Spieler.Count())
-                    {
-                        Console.WriteLine(DialogManager.error);
-                        isCorrect = false;
-                    }
-                    else
-                    {
-                        isCorrect = true;
-                    }
+                    break;
                 }
-                else
-                {
-                    Console.WriteLine(DialogManager.error);
-                    umwandlung = false;
-                }
+                Console.WriteLine(DialogManager.error);
             }
+        }
+        private bool UmwandlungPlayer1(string player1Eingabe)
+        {
+            bool umwandlung = Int32.TryParse(player1Eingabe, out player1);
 
+            return umwandlung && player1 < Spieler.Count();
         }
 
         public void SetPlayer2()
         {
-            bool isCorrect = false;
-
-            while (!isCorrect)
+            while (true)
             {
                 DialogManager.WriteSetPlayer2();
-                string player2Eingabe = Console.ReadLine();
-                bool umwandlung = Int32.TryParse(player2Eingabe, out player2);
+                bool umwandlung = UmwandlungPlayer2(Console.ReadLine());
                 bool samePlayer = player1 == player2;
-                if (umwandlung)
-                {
-                    if (samePlayer)
-                    {
-                        Console.WriteLine(DialogManager.wrongPlayers);
-                        isCorrect = false;
-                    }
-                    else if (player2 >= Spieler.Count())
-                    {
-                        Console.WriteLine(DialogManager.error);
-                        isCorrect = false;
-                    }
-                    else
-                    {
-                        Console.WriteLine("");
-                        isCorrect = true;
-                    }
-                }
 
+                if (umwandlung && !samePlayer)
+                {
+                    Console.WriteLine("");
+                    break;
+                }
+                else if (samePlayer)
+                {
+                    Console.WriteLine(DialogManager.wrongPlayers);
+                }
                 else
                 {
                     Console.WriteLine(DialogManager.error);
-                    umwandlung = false;
                 }
             }
+        }
+
+        private bool UmwandlungPlayer2(string player2Eingabe)
+        {
+            bool umwandlung = Int32.TryParse(player2Eingabe, out player2);
+            return umwandlung && player2 < Spieler.Count();
         }
 
         public void SetResult1()
@@ -133,7 +118,6 @@ namespace Elo_Ranking
             {
                 isCorrect = true;
                 DialogManager.WriteSetResult1(this);
-                //Console.WriteLine($"Punktzahl {Spieler[player1].Name} :");
                 string result1Eingabe = Console.ReadLine();
                 bool umwandlung = Int32.TryParse(result1Eingabe, out result1);
                 if (!umwandlung)
@@ -178,6 +162,7 @@ namespace Elo_Ranking
         }
         public void ApplyMatch()
         {
+            //var SpielerSorted = Spieler.OrderByDescending(Spieler => Spieler.Elo).ToList();
             float EloAltPlayer1 = Spieler[player1].Elo;
             float EloAltPlayer2 = Spieler[player2].Elo;
             Spieler[player1].UpdateElo(result1, result2, Spieler[player2].Elo);
@@ -188,15 +173,24 @@ namespace Elo_Ranking
             Console.WriteLine($"{Spieler[player2].Name} bekommt {DiffEloPlayer2.ToString("n0")} Elo-Punkte\n");
         }
 
+        public void TabelleColoredAnzeigen()
+        {
+            Tabelle.TabelleLigaColored(this);
+        }
+
         public void TabelleAnzeigen()
         {
             Tabelle.TabelleLiga(this);
         }
 
-        
-            
+        public void IndiciesAlt()
+        {
 
-        
+        }
+
+
+
+
     }
 }
 

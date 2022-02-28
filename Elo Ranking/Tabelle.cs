@@ -16,13 +16,13 @@ namespace Elo_Ranking
             }
         }
 
-        public static void TabelleLiga(Spielerverwaltung spielerverwaltung)
+        public static void TabelleLigaColored(Spielerverwaltung spielerverwaltung)
         {
-            List<Spieler> SpielerSorted = spielerverwaltung.Spieler.OrderByDescending(Spieler => Spieler.Elo).ToList();
+            var SpielerSorted = spielerverwaltung.Spieler.OrderByDescending(Spieler => Spieler.Elo).ToList();
 
             for (int i = 0; i < SpielerSorted.Count; i++)
             {
-                if (SpielerSorted[i].Name.Length >= 8)
+                if (SpielerSorted[i].Name.Length >= 7)
                 {
                     if (SpielerSorted[i].Name == spielerverwaltung.Spieler[spielerverwaltung.Player1].Name)
                     {
@@ -31,9 +31,9 @@ namespace Elo_Ranking
                         Console.ResetColor();
 
                     }
-                    else if(SpielerSorted[i].Name == spielerverwaltung.Spieler[spielerverwaltung.Player2].Name)
+                    else if (SpielerSorted[i].Name == spielerverwaltung.Spieler[spielerverwaltung.Player2].Name)
                     {
-                        Console.ForegroundColor= ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"{SpielerSorted[i].Name} \t {SpielerSorted[i].Elo.ToString("n0")} Elo");
                         Console.ResetColor();
                     }
@@ -62,6 +62,22 @@ namespace Elo_Ranking
                     {
                         Console.WriteLine($"{SpielerSorted[i].Name} \t\t {SpielerSorted[i].Elo.ToString("n0")} Elo");
                     }
+                }
+            }
+        }
+        public static void TabelleLiga(Spielerverwaltung spielerverwaltung)
+        {
+            var SpielerSorted = spielerverwaltung.Spieler.OrderByDescending(Spieler => Spieler.Elo).ToList();
+
+            for (int i = 0; i < SpielerSorted.Count; i++)
+            {
+                if (SpielerSorted[i].Name.Length >= 7)
+                {
+                    Console.WriteLine($"{SpielerSorted[i].Name} \t {SpielerSorted[i].Elo.ToString("n0")} Elo");
+                }
+                else
+                {
+                    Console.WriteLine($"{SpielerSorted[i].Name} \t\t {SpielerSorted[i].Elo.ToString("n0")} Elo");
                 }
             }
         }
