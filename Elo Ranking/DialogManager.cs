@@ -42,6 +42,21 @@ namespace Elo_Ranking
             Console.WriteLine($"\nPunktzahl {spielerverwaltung.Spieler[spielerverwaltung.Player2].Name} :");
             Console.ResetColor();
         }
+        public static void SetPlayer1(Spielerverwaltung spielerverwaltung)
+        {
+            Tabelle.SpielerListe(spielerverwaltung);
+
+            while (true)
+            {
+                DialogManager.WriteSetPlayer1();
+
+                if (spielerverwaltung.UmwandlungPlayer1(Console.ReadLine()))
+                {
+                    break;
+                }
+                Console.WriteLine(DialogManager.error);
+            }
+        }
 
 
 

@@ -58,22 +58,22 @@ namespace Elo_Ranking
             FirstAction();
         }
 
-        public void SetPlayer1()
-        {
-            Tabelle.SpielerListe(this);
+        //public void SetPlayer1()
+        //{
+        //    Tabelle.SpielerListe(this);
 
-            while (true)
-            {
-                DialogManager.WriteSetPlayer1();
+        //    while (true)
+        //    {
+        //        DialogManager.WriteSetPlayer1();
 
-                if (UmwandlungPlayer1(Console.ReadLine()))
-                {
-                    break;
-                }
-                Console.WriteLine(DialogManager.error);
-            }
-        }
-        private bool UmwandlungPlayer1(string player1Eingabe)
+        //        if (UmwandlungPlayer1(Console.ReadLine()))
+        //        {
+        //            break;
+        //        }
+        //        Console.WriteLine(DialogManager.error);
+        //    }
+        //}
+        public bool UmwandlungPlayer1(string player1Eingabe)
         {
             bool umwandlung = Int32.TryParse(player1Eingabe, out player1);
 
@@ -162,7 +162,6 @@ namespace Elo_Ranking
         }
         public void ApplyMatch()
         {
-            //var SpielerSorted = Spieler.OrderByDescending(Spieler => Spieler.Elo).ToList();
             float EloAltPlayer1 = Spieler[player1].Elo;
             float EloAltPlayer2 = Spieler[player2].Elo;
             Spieler[player1].UpdateElo(result1, result2, Spieler[player2].Elo);

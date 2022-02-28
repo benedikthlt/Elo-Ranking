@@ -13,7 +13,7 @@
                 isRunning = false;
 
                 spielerverwaltung.FirstAction();
-                spielerverwaltung.SetPlayer1();
+                DialogManager.SetPlayer1(spielerverwaltung);
                 spielerverwaltung.SetPlayer2();
 
                 bool isRunning2 = true;
