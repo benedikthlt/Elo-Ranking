@@ -26,8 +26,8 @@
                     while (!proved)
                     {
                         proved = true;
-                        spielerverwaltung.SetResult1();
-                        spielerverwaltung.SetResult2();
+                        DialogManager.SetResult1(spielerverwaltung);
+                        DialogManager.SetResult2(spielerverwaltung);
 
                         if (!spielerverwaltung.CheckResult())
                         {

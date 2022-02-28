@@ -78,20 +78,9 @@ namespace Elo_Ranking
             return Int32.TryParse(result1Eingabe, out result1);
         }
 
-        public void SetResult2()
-        {
-            while (true)
-            {
-                DialogManager.WriteSetResult2(this);
-                if (Result2(Console.ReadLine()))
-                {
-                    break;
-                }
-                Console.WriteLine(DialogManager.wrongFormat);
-            }
-        }
+        
 
-        private bool Result2(string result2Eingabe)
+        public bool Result2(string result2Eingabe)
         {
             return Int32.TryParse(result2Eingabe, out result2);
         }
